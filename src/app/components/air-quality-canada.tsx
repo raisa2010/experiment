@@ -2,6 +2,7 @@
 
 import { Combobox } from "@base-ui-components/react";
 import { CheckIcon, Dices, Search } from "lucide-react";
+import Image from 'next/image';
 import { useState } from "react";
 
 interface City {
@@ -100,65 +101,75 @@ const AirQualityRedesignCanada = () => {
     const [city, setCity] = useState<City | null>(null)
 
     return (
-        <div className="flex justify-center px-4 items-center align-middle flex-col bg-white h-[100vh] w-[100vw]">
-            <div className="bg-red-400 w-full h-48 rounded-xl flex flex-row justify-start items-center align-middle px-4 gap-6">
-                <span className="text-[6rem]">11</span>
-                <div className="flex flex-col justify-between py-8 gap-4 w-full">
-                    <span>Very High Risk</span>
-                    <form className="min-w-full mx-auto">
-                        <div className="relative">
-                            <div className="absolute inset-y-0 flex items-center ps-3.5">
-                                <Search color="gray" size={15} className="pointer-events-none" />
-                            </div>
-                            <Combobox.Root items={canadianCities} value={city}>
-                                <Combobox.Trigger className="box-border flex items-center justify-between gap-3 h-10 pl-3.5 pr-3 m-0 outline-none border bg-gray-100 border-gray-300 text-gray-900 text-xs font-sm ps-10 rounded-lg font-inherit leading-6 cursor-default select-none w-full
-                                            hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:-outline-offset-1">
-                                    <Combobox.Value />
-                                    <Combobox.Icon className="flex" onClick={() => { setCity(canadianCities[Math.floor(Math.random() * canadianCities.length)]) }}>
-                                        <div className="absolute inset-y-0 flex items-center right-3.5">
-                                            <div className="rounded-full right-3.5 bg-[radial-gradient(circle,_rgb(219_234_254)_0%,_rgb(219_234_254_/_0.6)_50%,_transparent_80%)]"><Dices color="blue" className="bg-blue-100 m-2" size={15} /></div>
-                                        </div>
-                                    </Combobox.Icon>
-                                </Combobox.Trigger>
-                                <Combobox.Portal>
-                                    <Combobox.Positioner align="start" sideOffset={4}>
-                                        <Combobox.Popup className="box-border rounded-md bg-white text-gray-900 max-h-96 outline-1 outline-gray-200
-                                                    shadow-lg shadow-gray-200/50 origin-top animate-in fade-in zoom-in-95 duration-150 w-full mr-[-16]" aria-label="Search destination">
-                                            <div className="box-border w-full h-12 text-center p-2">
-                                                <Combobox.Input placeholder="e.g. Montreal, QC" className="box-border pl-3.5 m-0 border border-gray-300 w-full h-10 rounded-md
-                                                        font-inherit text-base bg-white text-gray-900 outline-none focus:border-blue-500 focus:outline-1 focus:outline-blue-500" />
-                                            </div>
-                                            <Combobox.Empty className="min-w-[var(--anchor-width)] box-border text-[0.925rem] leading-4 text-gray-600 p-4 empty:hidden">No countries found.</Combobox.Empty>
-                                            <Combobox.List className="box-border overflow-auto max-h-64 [scroll-padding-block:0.5rem] py-2 overscroll-contain empty:p-0">
-                                                {(city: City) => (
-                                                    <Combobox.Item onClick={() => setCity(city)} key={city.code} value={city} className="box-border outline-0 cursor-default select-none min-w-[var(--anchor-width)] py-2 pl-4 pr-8 grid gap-2 items-center grid-cols-[0.75rem_1fr] text-base leading-4 data-[highlighted]:z-0 data-[highlighted]:relative data-[highlighted]:text-gray-50 data-[highlighted]:before:content-[''] data-[highlighted]:before:z-[-1] data-[highlighted]:before:absolute data-[highlighted]:before:inset-y-0 data-[highlighted]:before:inset-x-2 data-[highlighted]:before:rounded data-[highlighted]:before:bg-gray-900">
-                                                        <Combobox.ItemIndicator className="col-start-1">
-                                                            <CheckIcon className="block w-3 h-3" />
-                                                        </Combobox.ItemIndicator>
-                                                        <div className="col-start-2">{city.label ?? city.value}</div>
-                                                    </Combobox.Item>
-                                                )}
-                                            </Combobox.List>
-                                        </Combobox.Popup>
-                                    </Combobox.Positioner>
-                                </Combobox.Portal>
-                            </Combobox.Root>
-                        </div>
-                    </form>
+        <div className="bg-white h-[100vh] w-[100vw]">
+            <div className="px-4">
+                <div className="flex flex-row items-center align-middle justify-start gap-4">
+                    <Image src="/flag_of_canada.webp" alt="Flag of Canada" width="80" height="80" className="py-4" />
+                    <span className="text-black font-semibold">Government of Canada</span>
                 </div>
+                <input className="w-full h-[2rem] border-1 border-gray-100 mb-4"></input>
             </div>
-            <div className="flex flex-row h-8 mt-6 w-full">
-                <div className="bg-[#08D2FF] w-1/11"></div>
-                <div className="bg-[#009BD1] w-1/11"></div>
-                <div className="bg-[#01689C] w-1/11"></div>
-                <div className="bg-[#FFFF04] w-1/11"></div>
-                <div className="bg-[#FFC900] w-1/11"></div>
-                <div className="bg-[#FF9400] w-1/11"></div>
-                <div className="bg-[#FF5760] w-1/11"></div>
-                <div className="bg-[#FF0000] w-1/11"></div>
-                <div className="bg-[#DF0000] w-1/11"></div>
-                <div className="bg-[#A80000] w-1/11"></div>
-                <div className="bg-[#7E0403] w-1/11"></div>
+            <div className="w-full bg-[#213649] h-[0.75]"></div>
+            <div className="flex justify-start px-4 items-center flex-col w-full h-full py-6">
+                <div className="bg-red-400 w-full h-48 rounded-xl flex flex-row justify-start items-center align-middle px-4 gap-6">
+                    <span className="text-[6rem]">11</span>
+                    <div className="flex flex-col justify-between py-8 gap-4 w-full">
+                        <span>Very High Risk</span>
+                        <form className="min-w-full mx-auto">
+                            <div className="relative">
+                                <div className="absolute inset-y-0 flex items-center ps-3.5">
+                                    <Search color="gray" size={15} className="pointer-events-none" />
+                                </div>
+                                <Combobox.Root items={canadianCities} value={city}>
+                                    <Combobox.Trigger className="box-border flex items-center justify-between gap-3 h-10 pl-3.5 pr-3 m-0 outline-none border bg-gray-100 border-gray-300 text-gray-900 text-xs font-sm ps-10 rounded-lg font-inherit leading-6 cursor-default select-none w-full
+                                            hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:-outline-offset-1">
+                                        <Combobox.Value />
+                                        <Combobox.Icon className="flex" onClick={() => { setCity(canadianCities[Math.floor(Math.random() * canadianCities.length)]) }}>
+                                            <div className="absolute inset-y-0 flex items-center right-3.5">
+                                                <div className="rounded-full right-3.5 bg-[radial-gradient(circle,_rgb(219_234_254)_0%,_rgb(219_234_254_/_0.6)_50%,_transparent_80%)]"><Dices color="blue" className="bg-blue-100 m-2" size={15} /></div>
+                                            </div>
+                                        </Combobox.Icon>
+                                    </Combobox.Trigger>
+                                    <Combobox.Portal>
+                                        <Combobox.Positioner align="start" sideOffset={4}>
+                                            <Combobox.Popup className="box-border rounded-md bg-white text-gray-900 max-h-96 outline-1 outline-gray-200
+                                                    shadow-lg shadow-gray-200/50 origin-top animate-in fade-in zoom-in-95 duration-150 w-full mr-[-16]" aria-label="Search destination">
+                                                <div className="box-border w-full h-12 text-center p-2">
+                                                    <Combobox.Input placeholder="e.g. Montreal, QC" className="box-border pl-3.5 m-0 border border-gray-300 w-full h-10 rounded-md
+                                                        font-inherit text-base bg-white text-gray-900 outline-none focus:border-blue-500 focus:outline-1 focus:outline-blue-500" />
+                                                </div>
+                                                <Combobox.Empty className="min-w-[var(--anchor-width)] box-border text-[0.925rem] leading-4 text-gray-600 p-4 empty:hidden">No countries found.</Combobox.Empty>
+                                                <Combobox.List className="box-border overflow-auto max-h-64 [scroll-padding-block:0.5rem] py-2 overscroll-contain empty:p-0">
+                                                    {(city: City) => (
+                                                        <Combobox.Item onClick={() => setCity(city)} key={city.code} value={city} className="box-border outline-0 cursor-default select-none min-w-[var(--anchor-width)] py-2 pl-4 pr-8 grid gap-2 items-center grid-cols-[0.75rem_1fr] text-base leading-4 data-[highlighted]:z-0 data-[highlighted]:relative data-[highlighted]:text-gray-50 data-[highlighted]:before:content-[''] data-[highlighted]:before:z-[-1] data-[highlighted]:before:absolute data-[highlighted]:before:inset-y-0 data-[highlighted]:before:inset-x-2 data-[highlighted]:before:rounded data-[highlighted]:before:bg-gray-900">
+                                                            <Combobox.ItemIndicator className="col-start-1">
+                                                                <CheckIcon className="block w-3 h-3" />
+                                                            </Combobox.ItemIndicator>
+                                                            <div className="col-start-2">{city.label ?? city.value}</div>
+                                                        </Combobox.Item>
+                                                    )}
+                                                </Combobox.List>
+                                            </Combobox.Popup>
+                                        </Combobox.Positioner>
+                                    </Combobox.Portal>
+                                </Combobox.Root>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div className="flex flex-row h-8 mt-6 w-full">
+                    <div className="bg-[#08D2FF] w-1/11"></div>
+                    <div className="bg-[#009BD1] w-1/11"></div>
+                    <div className="bg-[#01689C] w-1/11"></div>
+                    <div className="bg-[#FFFF04] w-1/11"></div>
+                    <div className="bg-[#FFC900] w-1/11"></div>
+                    <div className="bg-[#FF9400] w-1/11"></div>
+                    <div className="bg-[#FF5760] w-1/11"></div>
+                    <div className="bg-[#FF0000] w-1/11"></div>
+                    <div className="bg-[#DF0000] w-1/11"></div>
+                    <div className="bg-[#A80000] w-1/11"></div>
+                    <div className="bg-[#7E0403] w-1/11"></div>
+                </div>
             </div>
         </div>
     )
