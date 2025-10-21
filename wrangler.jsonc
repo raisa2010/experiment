@@ -17,6 +17,9 @@
 	},
 	"observability": {
 		"enabled": true
+	},
+	"vars": {
+		"NEXT_PUBLIC_STATSIG_CLIENT_KEY": ""
 	}
 	/**
 	 * Smart Placement
